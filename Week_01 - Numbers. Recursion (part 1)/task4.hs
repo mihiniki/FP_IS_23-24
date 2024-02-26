@@ -19,5 +19,5 @@ areNotEqualGuards x y
  | x /= y = True
  | otherwise = False
 
-inside :: Int -> Int -> Int -> Bool
+-- inside :: Int -> Int -> Int -> Bool
 inside start finish x = x >= (min start finish) && x <= (max start finish)

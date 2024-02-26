@@ -129,7 +129,7 @@ FOR HOME:
 
 
 What is a declaration and what is a definition?
-   int add(const int x, const int y)       <-- ???
+   int add(const int x, const int y)       <-- declaration
    {                                       <-- ???
       return x + y;                        <-- ???
    }                                       <-- ???
