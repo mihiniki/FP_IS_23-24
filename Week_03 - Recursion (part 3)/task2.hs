@@ -18,4 +18,8 @@ main = do
     print $ calculateSum 1 11 == 12
     print $ calculateSum 2 11 == 4095
 
-
+calculateSum :: Int -> Int -> Int
+calculateSum x n = helper n 1
+ where 
+    helper 0 sum = sum
+    helper power sum = helper (power - 1) (sum + x^power)

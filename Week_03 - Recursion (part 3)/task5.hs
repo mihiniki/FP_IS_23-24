@@ -18,4 +18,16 @@ main = do
     print $ subNum 1253 5123783 == False
     print $ subNum 12 0 == False
 
+countDigits :: Int -> Int
+countDigits 0 = 0
+countDigits n = 1 + countDigits (div n 10)
 
+subNum :: Int -> Int -> Bool
+subNum x y 
+ | y < x = False
+ | mod y (10^countDigits x) == x = True
+ | otherwise = subNum x (div y 10)
+
+
+
+ 

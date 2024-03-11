@@ -24,4 +24,15 @@ main = do
     print $ digitalRoot 132189 == 6
     print $ digitalRoot 493193 == 2
 
+sumDigits :: Int -> Int
+sumDigits 0 = 0
+sumDigits n = (mod n 10) + sumDigits (div n 10)
+
+digitalRoot :: Int -> Int
+digitalRoot n
+ | n < 0 = error "N must be natural number"
+ | n < 10 = n 
+ | otherwise = digitalRoot $ sumDigits n
+
+
 

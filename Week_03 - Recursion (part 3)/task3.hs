@@ -13,4 +13,11 @@ main = do
     print $ findMax 329450 == 9
     print $ findMax 9521 == 9
 
+findMax :: Int -> Int
+findMax n = helper (div n 10) (mod n 10)
+ where
+    helper 0 res = res
+    helper n res 
+     | mod n 10 >= res = helper (div n 10) (mod n 10)
+     | otherwise = helper (div n 10) res
 

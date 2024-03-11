@@ -14,7 +14,16 @@ show image in github
 
 main :: IO()
 main = do
-    print $ mySin 100 1 == 0.8414709848078965 -- n = 100, x = 1
-    print $ mySin 100 0.5 == 0.479425538604203
+    print $ fact 5
+    print $ mySin 100 1 -- == 0.8414709848078965 -- n = 100, x = 1
+    print $ mySin 100 0.5 -- == 0.479425538604203
 
+fact :: Int -> Int
+fact 0 = 1
+fact x = x*fact (x - 1)
+
+mySin :: Int -> Double -> Double
+mySin 0 x = x
+mySin n x = (-1)^n * x^(2*n + 1)/ (fromIntegral $ fact (2*n + 1)) + mySin (n - 1) x
+ 
 

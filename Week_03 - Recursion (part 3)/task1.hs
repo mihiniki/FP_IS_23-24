@@ -19,10 +19,21 @@ and 1634 (4 digits):
 
 main :: IO()
 main = do
+
     print $ isNarcissistic 7 == True
     print $ isNarcissistic 12 == False
     print $ isNarcissistic 370 == True
     print $ isNarcissistic 371 == True
     print $ isNarcissistic 1634 == True
+
+countDigits :: Int -> Int
+countDigits 0 = 0
+countDigits n = 1 + countDigits (div n 10)
+
+isNarcissistic :: Int -> Bool
+isNarcissistic n = n == helper n
+ where
+    helper 0 = 0
+    helper leftover = (mod leftover 10)^(countDigits n) + helper (div leftover 10)
 
 
