@@ -20,3 +20,19 @@ main = do
     print $ myLengthFunc [] == 0
     print $ myLengthFunc [1, 2, 3] == 3
 
+myLengthRecNonPM :: [Int] -> Int
+myLengthRecNonPM xs
+ | null xs = 0
+ | otherwise = 1 + myLengthRecNonPM (tail xs)
+
+myLengthRecPM :: [Int] -> Int
+myLengthRecPM [] = 0
+myLengthRecPM (_:xs) = 1 + myLengthRecPM xs
+
+myLengthFunc :: [Int] -> Int
+myLengthFunc = length 
+-- myLengthFunc xs = length xs
+
+--xs = [1, 2, 3, 4]
+--x = 1, xs = [2, 3, 4]
+--myLengthRecPM (1:xs) = 1 + myLengthRecPM xs

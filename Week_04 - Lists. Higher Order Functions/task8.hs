@@ -33,3 +33,18 @@ main = do
     print $ sumDivs 161 == 192
 
 
+rev :: Int -> Int
+rev = read . reverse . show
+-- rev x = read $ reverse $ show x 
+
+fact :: Int -> Int
+fact x = product [1 .. x]
+
+isPrime :: Int -> Bool
+isPrime x = x > 1 && null [n | n <- [2 .. x -1], mod x n == 0]
+
+sumDig :: Int -> Int
+sumDig n = sum $ map (\ x -> digitToInt x) $ show n
+
+sumDivs :: Int -> Int
+sumDivs n = sum $ filter (\ x -> mod n x == 0) [1 .. n]

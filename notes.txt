@@ -196,9 +196,15 @@ Useful built-in functions
 
     - all but the last element
         - init [1 .. 5] = [1, 2, 3, 4]
+        [1 .. 7] -> [1, 2, 3, 4, 5, 6, 7]
+        [1, 3, .. 7] -> [1, 3, 5, 7]
 
     - get all the wagons of the train
         - (x:xs) => xs is the tail
+      right ->  (1:[2, 3, 4]) -> [1, 2, 3, 4]
+      left ->   (1:[1, 2, 3, 4, 5]) 
+      x = 1
+        xs = [2, 3, 4, 5]
         - tail [1, 2, 3] => [2, 3]
         - tail [1 .. 5]  => [2, 3, 4, 5]
 
@@ -236,7 +242,7 @@ Useful functions in the module Data.List
  - The group function takes a list and returns a list of lists such that the concatenation of the result is equal to the argument.
  Moreover, each sublist in the result contains only equal consecutive elements
       group :: (Eq a) => [a] -> [[a]]
-      group "Mississippi" => ["M","i","ss","i","ss","i","pp","i"]
+      group "Misssissippi" => ["M","i","sss","i","ss","i","pp","i"]
 
  - replicate :: Int -> a -> [a]
       replicate 5 10 -> [10,10,10,10,10]
@@ -269,7 +275,8 @@ Higher order functions:
 
 Lambda function:
    (\ x -> f x)
-
+   (\ x y -> x + y)
+   map (+ 10) [1 .. 6] 
  - map    (\ x -> x + 10)         [1 .. 6]     => [11, 12, 13, 14, 15, 16] (eqiv. map (+10) [1 .. 6])
  - filter (\ x -> even x)         [1 .. 6]     => [2, 4, 6] (eqiv. filter even [1 .. 6])
  - all    (\ x -> odd x)          [1 .. 6]     => False
@@ -278,3 +285,5 @@ Lambda function:
  - any    (\ x -> mod x 10 == 0)  [20, 44, 61] => True
 
 
+all (\ x -> even x) [1, 5, 8, 10, 12] = False
+any (\ x -> even x) [1, 5, 8, 10, 12] = True

@@ -22,3 +22,9 @@ main = do
     print $ incrementByHOF 5 [5, 1, 5, 3, 5] == [10, 6, 10, 8, 10]
     print $ incrementByHOF 3 [5, 1, 5, 3, 5] == [8, 4, 8, 6, 8]
 
+incrementByLC :: Int -> [Int] -> [Int]
+incrementByLC n xs = [x + n | x <- xs]
+
+incrementByHOF :: Int -> [Int] -> [Int]
+incrementByHOF n = map (+ n)
+-- incrementByHOF n xs = map (\ x -> x + n) xs

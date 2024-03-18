@@ -21,4 +21,12 @@ main = do
     print $ hasElementsButWithMagic [1, 2, 3] == True
 
 
+hasElementsPM :: [Int] -> Bool
+hasElementsPM [] = False
+hasElementsPM xs = True
 
+hasElementsFunc :: [Int] -> Bool
+hasElementsFunc xs = not $ null xs
+
+hasElementsButWithMagic :: [Int] -> Bool
+hasElementsButWithMagic = not . null
