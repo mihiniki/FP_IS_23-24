@@ -5,7 +5,7 @@ Define a function that:
 lambda that applies that function to its argument;
 - accepts a predicate and returns a unary
 lambda that applies the
-negated predicate to its argument;
+negated predicate to its argument; -> ()
 - accepts two functions and returns their composition over an argument;
 - returns a function that is the partial application of `f` over `x`;
 - `(\ x y z -> x y z) (\ x y -> x + y) 5 6` <- What will the output be?
@@ -35,13 +35,17 @@ main = do
     print $ (\ x y z -> x y z) (\ x y -> x + y) 5 6
 
 partiallyApply :: (a -> a -> a) -> a -> (a -> a)
-
+partiallyApply f x = (\ y -> f x y)
 
 compose :: (b -> c) -> (a -> b) -> (a -> c)
+compose f g = (\ x -> (f . g) x)
 
 
-negatePred :: (Num a) => (a -> Bool) -> (a -> Bool)
-
+negatePred :: (a -> Bool) -> (a -> Bool)
+negatePred f = (\ x -> not $ f x)
 
 myLambda :: (a -> a) -> (a -> a)
+myLambda f = (\ x -> f x)
 
+--f :: (Int -> Int) -> (Int -> Int)
+--f g = (\ x -> g x)

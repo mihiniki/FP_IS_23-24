@@ -25,7 +25,10 @@ main = do
 type Rat a = (a, a)
 
 normalizeUsingLet :: (Integral a) => Rat a -> Rat a
-
+normalizeUsingLet (x, y) = let t = gcd x y in (div z t, div y t)
 
 normalize :: (Integral a) => Rat a -> Rat a
+normalize (x, y) = (div x t, div y t)
+ where
+    t = gcd x y
 

@@ -22,12 +22,12 @@ main = do
     print $ dividePM (5, 10) == (0, 5) -- 5 / 10 = 0 and 5 % 10 = 5
 
     -- lambda test case
-   
+    print $ (\ (k, l) -> (div k l, mod k l)) (10, 5)
 
 dividePM :: Point -> Point
-
+dividePM (k, l) = (div k l, mod k l)
 
 divideNonPM :: Point -> Point
-
+divideNonPM tuple = (div (fst tuple) (snd tuple), mod (fst tuple) (snd tuple) )
 
 type Point = (Int, Int)

@@ -18,10 +18,11 @@ main = do
     print $ scaleVector (1, 2, 3) 5 == (5, 10, 15)
     print $ scaleVector (5, 2, 159) (-2) == (-10, -4, -318)
 
+-- type Vector = (Int, Int, Int)
 type Vector a = (a, a, a)
 
 scaleVector :: (Num a) => Vector a -> a -> Vector a
-
+scaleVector (x, y, z) n = (n*x, n*y, n*z)
 
 sumVectors :: (Num a) => Vector a -> Vector a -> Vector a
-
+sumVectors (x, y, z) (x1, y1, z1) = (x + x1, y + y1, z + z1)

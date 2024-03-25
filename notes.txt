@@ -291,7 +291,7 @@ any (\ x -> even x) [1, 5, 8, 10, 12] = True
 ###################################################################################################
 # Week_05 - Lambda Expressions. Tuples
 ###################################################################################################
-
+filter (\ x -> even x) xs
 Lambda Expressions
    - functions without a name (anonymous)
       - have to be called or passed as an argument immediately
@@ -318,7 +318,8 @@ Lambda Expressions
 
    - a lambda-predicate that checks whether a number is greater than 10:
    (\ n -> n > 10)
-
+f  = (+n)
+f x = x + n
    - a lambda which adds three numbers:
    (\ n m x -> n + m + x)
 
@@ -331,7 +332,13 @@ Lambda Expressions
       binary: mod, max, +, -
    
    - Remember: The evaluation happens from LEFT TO RIGHT.
+f = (+5)
+g = (*10)
 
+x = 3
+f(g x) = (3*10) + 5
+f $ g x
+(f . g) x
 Function Composition
    Composition of f and g over x:
       f $ g x
@@ -341,13 +348,13 @@ Function Composition
       (f . g) x
 
 Tuples (Vectors) (Ordered pairs)
-
+(Int, Double)
    - data structures whose size has to be explicitly stated (analogy with array in C++)
    - can hold multiple types (ex. x :: (Int, String, [Double]) is a vector with 3 dimensions)
 
    - fst (5, 6) => 5
    - snd (5, 6) => 6
-
+(Int, String)
    Examples:
    a vector with two coordinates representing a point in 2D space:
    type Point2D = (Int, Int) -- typedef std::pair<int, int> Point2D;
@@ -372,5 +379,10 @@ Typeclasses
       helper :: Int -> Int
 
    new:
-      helper :: (Num a, Num b) => a -> b
+      helper :: (Num a, Num b, Fractional a) => a -> b
 
+f :: Int -> Int
+f :: Double -> Int
+f :: Integer -> Int
+
+f :: a -> a
