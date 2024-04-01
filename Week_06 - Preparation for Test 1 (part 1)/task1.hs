@@ -31,5 +31,7 @@ main = do
     print $ (myPolynomial (\x -> x - 2) []) 5 == 0
     print $ (myPolynomial (\x -> x + 10) [3.62, 6.12, 9.45, 8.02, 5, 2]) (-5) == -356.45
     print $ (myPolynomial (\x -> x - 2) [1, 4, 7, 8, 5, 2]) 5 == 453
+    print $ zip [1, 2, 3] [4, 5, 6] == [(1, 4), (2, 5), (3, 6)]
 
-
+myPolynomial :: (Num a, Enum a) => (a -> a) -> [a] -> (a -> a) 
+myPolynomial f ys = (\ x -> sum $ map (\ (y, idx) -> idx*f (y*x)) $ zip ys [1 .. ])

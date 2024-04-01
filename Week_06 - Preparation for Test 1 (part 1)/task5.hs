@@ -30,4 +30,17 @@ type Subject = String
 type Note = Double
 type Record = (Student, Subject, Note)
 
+allSubjects :: [Record] -> [Subject]
+allSubjects records = nub $ map (\ (_, subj, _) -> subj) records
+
+average :: [Note] -> Note
+average xs = sum xs / (fromIntegral $ length xs) 
+
+-- hardestSubject :: [Record] -> 
+hardestSubject records = fst $ foldl1 (\ (subj1, grade1) (subj2, grade2) -> if grade1 < grade2 then (subj1, grade1) else (subj2, grade2) ) $ map (\ subj -> averageSubj subj) $ allSubjects records
+ where
+    allPeople subj = filter (\ (_, subject, grade) -> subject == subj) records
+    allGrades subj = map (\ (_, _, grade) -> grade) $ allPeople subj
+    averageSubj subj = (subj, average $ allGrades subj)
+
 

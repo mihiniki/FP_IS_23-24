@@ -21,6 +21,12 @@ main = do
     print $ dominatesFold (\x -> x + 1) (\x -> x + 2) [1, 2, 3, 4, 5] == False
     print $ dominatesFold (\x -> x * 3) (\x -> x + 2) [1, 2, 3, 4, 5] == True
 
+dominates :: (Ord a) => (a -> a) -> (a -> a) -> [a] -> Bool
+dominates f g xs = and $ map (\ x -> f x >= g x) xs
+
+dominatesFold ::(Ord a) =>  (a -> a) -> (a -> a) -> [a] -> Bool
+--dominatesFold f g xs = foldl (&&) True $ map (\ x -> f x >= g x) xs
+dominatesFold f g xs = foldl (\ acc x -> acc && x) True $ map (\ x -> f x >= g x) xs
 
 
 
