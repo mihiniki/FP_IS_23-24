@@ -26,4 +26,13 @@ main = do
 t :: BTree Int
 t = Node 6 (Node 3 Nil (Node 2 Nil (Node 1 Nil Nil))) (Node 5 (Node 0 Nil Nil) Nil)
 
+data BTree a = Nil | Node a (BTree a) (BTree a)
+ deriving (Show, Eq, Ord)
 
+constructMaxBTree :: (Ord a) => [a] -> BTree a
+constructMaxBTree [] = Nil
+constructMaxBTree xs = Node maxEl (constructMaxBTree leftXs) (constructMaxBTree rightXs)
+ where
+    maxEl = maximum xs
+    leftXs = takeWhile (/=maxEl) xs
+    rightXs = tail $ dropWhile (/=maxEl) xs
